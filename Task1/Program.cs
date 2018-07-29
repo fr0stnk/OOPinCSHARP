@@ -39,11 +39,11 @@ namespace Task1
 
                 foreach (var answer in dialog.AnswersList)
                 {
-                    Console.WriteLine($"{answer.Text} | ");
+                    Console.WriteLine($"{answer.Text}");
                 }
 
-                Console.WriteLine();
                 Console.ReadLine();
+                Console.WriteLine();
                 dialog.Door.SwitchState();
             }
 
