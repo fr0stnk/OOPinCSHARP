@@ -25,14 +25,13 @@ namespace Task2
             return oldBalance;
         }
 
-
         public void ApplyOrder(Order order)
         {
             if (order == null) throw new ArgumentNullException("order", "");
             if (Balance < order.GetTotalPrice()) throw new InvalidOperationException("");
 
             Balance -= order.GetTotalPrice();
-            order.ApplyOrder();
+            order.ReduseAmount();
         }
 
         public Good[] GetProductList()
