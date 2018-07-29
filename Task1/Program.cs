@@ -48,7 +48,6 @@ namespace Task1
             }
 
             
-
             Console.ReadLine();
         }
     }
