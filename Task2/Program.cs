@@ -33,7 +33,6 @@ namespace Task2
                 }
             };
 
-
             WendingMachine machine = new WendingMachine(1000, goods);
             WendingMachine machine2 = new WendingMachine(1000, goods);
 
