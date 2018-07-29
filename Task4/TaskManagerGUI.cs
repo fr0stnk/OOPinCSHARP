@@ -22,8 +22,8 @@ namespace Task4
             Console.WriteLine("Доступные списки с задачами: ");
             _taskManager.PrintTaskLists();
             Console.WriteLine();
-            Console.WriteLine("\nСписок доступных команд: AddTask, AddList, PrintTasks, ClearTaskList");
-            Console.WriteLine("Введите команду");
+            Console.WriteLine("\nСписок доступных команд: AddTask, AddList, PrintTasks, PrintAllTasks, ClearTaskList");
+            Console.WriteLine("Введите команду: ");
 
             string command = Console.ReadLine()?.ToLower();
             switch (command)
@@ -49,8 +49,9 @@ namespace Task4
                     Console.ReadLine();
                     break;
                 case "printalltasks":
-                    Console.Write("Введите имя списка, задачи которого надо вывести: ");
-                    _taskManager.PrintTaskListsElements();
+                    Console.Write("Все задачи: ");
+                    _taskManager.PrintAllTasks();
+                    Console.ReadLine();
                     break;
                 default:
                     break;

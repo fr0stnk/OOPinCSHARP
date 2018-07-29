@@ -10,7 +10,6 @@ namespace Task4
 {
     class TaskManager
     {
-        //TODO: Не работает метод PrintTaskListElements
         public List<TaskList> TasksCollection = new List<TaskList>()
         {
                 new TaskList("домашний"),
@@ -18,22 +17,28 @@ namespace Task4
                 new TaskList("семейный")
         };
         
-
+        /// <summary>
+        /// Create new task list
+        /// </summary>
+        /// <param name="name"></param>
         public void CreateTaskList(string name)
         {
             TasksCollection.Add(new TaskList(name.ToLower()));
         }
         
-
+        /// <summary>
+        /// Prints all tasks in the list: "name"
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public void PrintTaskListsElements(string name)
         {
-            foreach (var listOfTasks in TasksCollection)
-            {
-                if (listOfTasks.Name != name)
-                    Console.Write($"{listOfTasks} |");
-            }
+            Console.WriteLine(TasksCollection.FirstOrDefault(g => g.Name == name));
+            
         }
-        public void PrintTaskListsElements()
+
+        
+        public void PrintAllTasks()
         {
             foreach (var listOfTasks in TasksCollection)
             {
