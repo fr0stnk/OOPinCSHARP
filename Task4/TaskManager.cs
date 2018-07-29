@@ -33,7 +33,7 @@ namespace Task4
         /// <returns></returns>
         public void PrintTaskListsElements(string name)
         {
-            Console.WriteLine(TasksCollection.FirstOrDefault(g => g.Name == name));
+            Console.WriteLine(TasksCollection.FirstOrDefault(g => g.Name == name).Name);
             
         }
 
