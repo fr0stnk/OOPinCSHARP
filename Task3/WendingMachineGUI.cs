@@ -18,18 +18,20 @@ namespace Task3
 
             Console.WriteLine("For command list, write 'help' \nWrite command... ");
 
-            string command = Console.ReadLine();
+            string command = Console.ReadLine().ToLower();
             switch (command)
             {
                 case "help":
-                    Console.WriteLine("list\norder\n");
+                    Console.WriteLine("List\nOrder\nAdd\nClear");
                     break;
+
                 case "list":
                     foreach (Good good in Machine.GetProductList())
                     {
                         Console.WriteLine($">{good.Name} [{good.Count}]");
                     }
                     break;
+
                 case "order":
                     Console.WriteLine("имя");
                     string name = Console.ReadLine();
@@ -40,10 +42,21 @@ namespace Task3
                     order.Good = Machine.GetProduct(name);
                     order.Count = count;
 
-                    Console.WriteLine($"Общая сума - {order.GetTotalPrice()}");
+                    Console.WriteLine($"Общая сумма - {order.GetTotalPrice()}");
 
                     Machine.ApplyOrder(order);
                     break;
+
+                case "add":
+                    Console.WriteLine("Какую сумму вы хотите добавить?");
+                    int amount = Int32.Parse(Console.ReadLine() ?? throw new InvalidOperationException("Был введен нуль"));
+                    Machine.AddBalance(amount);
+                    break;
+
+                case "clear":
+                    Machine.ClearBalance();
+                    break;
+
                 default:
                     break;
             }

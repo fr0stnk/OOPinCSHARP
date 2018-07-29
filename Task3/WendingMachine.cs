@@ -25,6 +25,11 @@ namespace Task3
             return oldBalance;
         }
 
+        public void AddBalance(int amount)
+        {
+            Balance += amount;
+        }
+
         public void ApplyOrder(Order order)
         {
             if (order == null) throw new ArgumentNullException("order", "");
