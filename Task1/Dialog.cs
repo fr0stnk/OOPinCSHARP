@@ -5,13 +5,13 @@ namespace Task1
     class Dialog
     {
         public Question Question { get; }
-        public List<Answer> Answers { get; }
+        public List<Answer> AnswersList { get; set; }
         public Door Door { get; set; }
 
-        public Dialog(Question question, List<Answer> arrayAnswers)
+        public Dialog(Question question, List<Answer> listOfAnswers)
         {
             Question = question;
-            Answers = arrayAnswers;
+            AnswersList = listOfAnswers;
             Door = new Door();
         }
 

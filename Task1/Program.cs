@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net;
-using System.Runtime.InteropServices;
-using System.Threading;
 
 namespace Task1
 {
@@ -16,21 +9,45 @@ namespace Task1
         {
             List<Dialog> dialogs = new List<Dialog>();
 
-            dialogs.Add(new Question("Кто вы?", Answer("Человек", "Брандлмуха", "Кхаджит")
-            { }));
-            dialogs.Add(new Dialog("Что вы хотите?", new string[]
-                {"Победить Аразота", "Стать богатым", "Найти боевых товарищей"}));
-            dialogs.Add(new Dialog("Чем вы можете помочь ордену?", new string[]
-            { "Я отлчиный воин", "Я добротный маг", "Я могу работать в кузнице"}));
+            dialogs.Add(new Dialog(new Question("Кто вы?"), new List<Answer>
+            {
+                new Answer("Человек"),
+                new Answer("Брандлмуха"),
+                new Answer("Кхаджит")
+            }));
+
+            dialogs.Add(new Dialog(new Question("Что вы хотите?"), new List<Answer>
+            {
+                new Answer("Победить Аразота"),
+                new Answer("Стать богатым"),
+                new Answer("Найти боевых товарищей")
+            }));
+
+            dialogs.Add(new Dialog(new Question("Чем вы можете помочь ордену?"), new List<Answer>
+            {
+                new Answer("Я отличный воин"),
+                new Answer("Я добротный маг"),
+                new Answer("Я могу работать в кузнице")
+            }));
 
             Console.WriteLine("Совершенно очевидно, что мы не берём в наш орден \nкого попало. По этому заполни вот эту анкету, " +
                               "и мы \nпримем решение, брать тебя или нет...");
             Console.WriteLine();
-
-            foreach (var item in dialogs )
+            foreach (var dialog in dialogs)
             {
-                item.DialogStart();
+                Console.WriteLine(dialog.Question.Text);
+
+                foreach (var answer in dialog.AnswersList)
+                {
+                    Console.WriteLine($"{answer.Text} | ");
+                }
+
+                Console.WriteLine();
+                Console.ReadLine();
+                dialog.Door.SwitchState();
             }
+
+            
 
             Console.ReadLine();
         }
