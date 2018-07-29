@@ -8,7 +8,7 @@ using System.Net;
 using System.Runtime.InteropServices;
 using System.Threading;
 
-namespace OOPinCSHARP
+namespace Task1
 {
     class Program
     {
@@ -16,8 +16,8 @@ namespace OOPinCSHARP
         {
             List<Dialog> dialogs = new List<Dialog>();
 
-            dialogs.Add(new Dialog("Кто вы?", new[]
-                { "Человек", "Брандлмуха", "Кхаджит" }));
+            dialogs.Add(new Question("Кто вы?", Answer("Человек", "Брандлмуха", "Кхаджит")
+            { }));
             dialogs.Add(new Dialog("Что вы хотите?", new string[]
                 {"Победить Аразота", "Стать богатым", "Найти боевых товарищей"}));
             dialogs.Add(new Dialog("Чем вы можете помочь ордену?", new string[]
@@ -33,45 +33,6 @@ namespace OOPinCSHARP
             }
 
             Console.ReadLine();
-        }
-
-       class Dialog
-        {
-            #region Fields
-            private string Question { get; }
-            private string[] Answers { get; }
-            public bool IsDoorOpen { get; set; }
-            
-            #endregion
-            
-            #region Constructor
-            public Dialog(string question, string[] answers)
-            {
-                Question = question;
-                Answers = answers;
-            }
-            #endregion
-
-            #region Methods
-            public void DialogStart()
-            {
-                Console.WriteLine(Question);
-                WriteAnswers();
-                Console.ReadLine();
-                Console.WriteLine();
-                IsDoorOpen = true;
-            }
-
-            private void WriteAnswers()
-            {
-                foreach (var item in Answers)
-                {
-                    Console.WriteLine($"{item}");
-                }
-            }
-            #endregion
-
-
         }
     }
 }
