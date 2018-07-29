@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D359C676-FFF1-4D34-8A9D-25EC07D2E0BD}</ProjectGuid>
+    <ProjectGuid>{0A6FE736-AEAF-436F-89D7-7297C436E081}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>OOPinCSHARP</RootNamespace>
-    <AssemblyName>OOPinCSHARP</AssemblyName>
+    <RootNamespace>Task1</RootNamespace>
+    <AssemblyName>Task1</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
