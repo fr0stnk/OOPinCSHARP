@@ -17,7 +17,7 @@ namespace Task2
         }
 
         //TODO: Rename
-        public void ApplyOrder()
+        public void ReduseAmount()
         {
             Good.Count -= Count;
         }
