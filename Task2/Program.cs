@@ -32,16 +32,17 @@ namespace Task2
                     Price = 2
                 }
             };
-        }
 
-        WendingMachine machine = new WendingMachine(1000, goods);
-        WendingMachine machine2 = new WendingMachine(1000, goods);
 
-        WendingMachineGUI gui = new WendingMachineGUI();
-        gui.Machine = machine;
-        while (true)
-        {
-            gui.Update();
+            WendingMachine machine = new WendingMachine(1000, goods);
+            WendingMachine machine2 = new WendingMachine(1000, goods);
+
+            WendingMachineGUI gui = new WendingMachineGUI();
+            gui.Machine = machine;
+            while (true)
+            {
+                gui.Update();
+            }
         }
 
         public static Good MakeGood(int price, string name, int count)
@@ -53,6 +54,5 @@ namespace Task2
 
             return good;
         }
-
     }
 }

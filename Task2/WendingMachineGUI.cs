@@ -16,7 +16,7 @@ namespace Task2
             Console.WriteLine($"Balance - {Machine.Balance}");
             Console.WriteLine();
 
-            Console.WriteLine("Write command...");
+            Console.WriteLine("For command list, write 'help' \nWrite command... ");
 
             string command = Console.ReadLine();
             switch (command)
@@ -31,16 +31,16 @@ namespace Task2
                     }
                     break;
                 case "order":
-                    Console.WriteLine("Имя");
+                    Console.WriteLine("имя");
                     string name = Console.ReadLine();
-                    Console.WriteLine("Кол-во");
+                    Console.WriteLine("кол-во");
                     int count = Convert.ToInt32(Console.ReadLine());
 
                     Order order = new Order();
                     order.Good = Machine.GetProduct(name);
                     order.Count = count;
 
-                    Console.WriteLine($"Общая сумма - {order.GetTotalPrice()}");
+                    Console.WriteLine($"Общая сума - {order.GetTotalPrice()}");
 
                     Machine.ApplyOrder(order);
                     break;
