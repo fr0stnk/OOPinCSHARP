@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace  Task2
+namespace  Task3
 {
     class GoodsRepository
     {
