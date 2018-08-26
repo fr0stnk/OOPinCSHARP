@@ -5,7 +5,7 @@ namespace Task1
     class Stack
     {
         private int[] Data = new int[1];
-        private int Top = -1;
+        private int Top = 0;
 
         public void Push(int x)
         {
@@ -21,7 +21,7 @@ namespace Task1
         public int Pop()
         {
             if (Top == 0)
-                Console.WriteLine("Сначала надо испечь блинчик!");
+                throw new InvalidOperationException("The stack is empty");
 
             int value = Data[--Top];
             Data[Top] = default(int);
@@ -30,7 +30,7 @@ namespace Task1
 
         public int GetSize()
         {
-            return Data.Length;
+            return Data.Length ;
         }
 
         public int[] GetData()
@@ -40,6 +40,8 @@ namespace Task1
 
         public int GetCurrent()
         {
+            if (Top == 0)
+                return 0;
             return Data[Top];
         }
     }
@@ -50,23 +52,48 @@ namespace Task1
         {
             Stack pancakes = new Stack();
             Random r = new Random();
+            bool appRunFlag = true;
 
-            Console.WriteLine("Что вы хотите?");
-            string command = Console.ReadLine();
-            switch (command)
+            while(appRunFlag)
             {
-                case "Скушать":
-                    Console.WriteLine($"В блинчике {pancakes.GetCurrent()} каллорий");
-                    break;
+                Console.WriteLine("Что вы хотите?");
+                string command = Console.ReadLine();
 
-                case "Испечь":
-                    int calories = r.Next(1, 20);
-                    Console.WriteLine($"Вы испекли блинчик с ${calories} калориями");
-                    pancakes.Push(calories);
-                    break;
+                switch (command)
+                {
+                    case "Скушать":
+                        if (pancakes.GetSize() != 0)
+                        {
+                            Console.WriteLine("В блинчике " + pancakes.GetCurrent() + " каллорий");
+                            pancakes.Pop();
+                        }
+                        else Console.WriteLine("Сначала испеките блинчик!");
 
-                default:
-                    break;
+                        break;
+
+                    case "Испечь":
+                        int calories = r.Next(1, 20);
+                        Console.WriteLine($"Вы испекли блинчик с {calories} калориями");
+                        pancakes.Push(calories);
+                        break;
+
+                    case "Покажи все блины":
+                        int[] array = pancakes.GetData();
+
+                        for (int i = 0; i < array.Length; i++)
+                        {
+                            Console.WriteLine(array[i]);
+                        }
+
+                        break;
+
+                    case "Выйти":
+                        appRunFlag = false;
+                        break;
+
+                    default:
+                        break;
+                }
             }
         }
     }
