@@ -12,14 +12,14 @@ namespace Task2
 
     abstract class Creature
     {
-        private int Health;
+        protected int Health;
 
         public virtual void TakeDamage(int damage)
         {
             
         }
 
-        private void CheckState()
+        protected void CheckState()
         {
             if (Health <= 0)
             {
@@ -28,33 +28,25 @@ namespace Task2
         }
     }
 
-    class Wombat
+    class Wombat : Creature
     {
-        public int Health;
         public int Armor;
 
-        public void TakeDamage(int damage)
+        public override void TakeDamage(int damage)
         {
             Health -= damage - Armor;
-            if (Health <= 0)
-            {
-                Console.WriteLine("Я умер");
-            }
+            CheckState();
         }
     }
 
-    class Human
+    class Human : Creature
     {
-        public int Health;
         public int Agility;
 
-        public void TakeDamage(int damage)
+        public override void TakeDamage(int damage)
         {
             Health -= damage / Agility;
-            if (Health <= 0)
-            {
-                Console.WriteLine("Я умер");
-            }
+            CheckState();
         }
     }
 }
