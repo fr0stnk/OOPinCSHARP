@@ -5,32 +5,35 @@ namespace Task1
     class Stack
     {
         private int[] Data = new int[1];
-        private int Top = 0;
+        private int Top  = -1;
 
         public void Push(int x)
         {
             if (Top + 1 >= Data.Length)
             {
-                //Notice the + 1, to counter the 0 length problem
                 Array.Resize(ref Data, (Data.Length + 1) * 2);
             }
 
-            Data[Top++] = x;
+            Data[++Top] = x;
         }
 
         public int Pop()
         {
-            if (Top == 0)
-                throw new InvalidOperationException("The stack is empty");
+            if (Top == -1)
+            {
+                Console.WriteLine("Блинов не осталось");
+                return -1;
+            }
 
-            int value = Data[--Top];
-            Data[Top] = default(int);
-            return value;
+
+            Console.WriteLine("В блинчике " + Data[Top] + " каллорий");
+            Top--;
+            return 1;
         }
 
         public int GetSize()
         {
-            return Data.Length ;
+            return Data.Length;
         }
 
         public int[] GetData()
@@ -38,12 +41,7 @@ namespace Task1
             return Data;
         }
 
-        public int GetCurrent()
-        {
-            if (Top == 0)
-                return 0;
-            return Data[Top];
-        }
+
     }
 
     class Program
@@ -62,12 +60,7 @@ namespace Task1
                 switch (command)
                 {
                     case "Скушать":
-                        if (pancakes.GetSize() != 0)
-                        {
-                            Console.WriteLine("В блинчике " + pancakes.GetCurrent() + " каллорий");
-                            pancakes.Pop();
-                        }
-                        else Console.WriteLine("Сначала испеките блинчик!");
+                        pancakes.Pop();
 
                         break;
 
@@ -77,7 +70,7 @@ namespace Task1
                         pancakes.Push(calories);
                         break;
 
-                    case "Покажи все блины":
+                    case "Покажи":
                         int[] array = pancakes.GetData();
 
                         for (int i = 0; i < array.Length; i++)
