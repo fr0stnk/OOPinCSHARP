@@ -25,7 +25,8 @@ namespace Task3
         public string FindContentInTag(string tag)
         {
             string page = DownloadString(_url);
-            Regex exp = new Regex($"/<{tag}[^>] *>[^<] *<\/{tag}>/");
+            Regex exp = new Regex($"<{tag}>(.*?)</{tag}>");
+            //Regex exp = new Regex($"/<{tag}[^>] *>[^<] *<\/{tag}>/");
 
             return exp.Match(page).Value;
         }
